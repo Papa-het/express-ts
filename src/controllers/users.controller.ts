@@ -1,8 +1,9 @@
 import express, { Request, Response } from "express";
 import { IControllerBase } from "../interfaces/IControllerBase.interface";
+import { users } from "../mocks/home";
 
-class HomeController implements IControllerBase {
-  public path = "/";
+class UsersController implements IControllerBase {
+  public path = "/users";
   public router = express.Router();
 
   constructor() {
@@ -10,13 +11,13 @@ class HomeController implements IControllerBase {
   }
 
   public initRoutes() {
-    this.router.get("/", this.index);
+    this.router.get("/users", this.index);
   }
 
   index = (req: Request, res: Response) => {
     console.log(req.query);
-    res.json("Home page");
+    res.json(users);
   };
 }
 
-export { HomeController };
+export { UsersController };
